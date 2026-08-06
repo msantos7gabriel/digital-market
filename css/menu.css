@@ -1,0 +1,86 @@
+@import url("globals.css");
+@import url("variables.css");
+
+.container {
+  width: 1728px;
+  height: 1052px;
+}
+
+.side-bar {
+  height: 1052px;
+  width: 234px;
+  background-color: var(--primary-color);
+}
+
+.side-bar .logo {
+  height: 177px;
+}
+.side-bar .logo img {
+  width: 98px;
+  height: 98px;
+  position: absolute;
+  left: 60px;
+  top: 43px;
+}
+
+.side-bar .paginas {
+  min-height: 748px;
+}
+.side-bar .pagina {
+  position: relative;
+}
+
+.side-bar .paginas .pagina a,
+.opcoes .opcao {
+  display: flex;
+  padding-left: 25px;
+  margin-block: 15px;
+  align-items: center;
+}
+
+/* Animação da barrinha branca */
+.sidebar_pages_links::before {
+  position: absolute;
+  content: "";
+  background-color: #f2f3f4;
+  width: 8px;
+  height: 43px;
+  left: 0;
+  border-radius: 0 5px 6px 0;
+
+  /* Estado inicial: invisível e encolhido */
+  opacity: 0;
+  transform: scaleY(0);
+
+  /* A mágica da transição suave */
+  transition: all 0.15s ease-in-out;
+}
+
+/* barrinha Branca lateral */
+.is_active::before {
+  position: absolute;
+  content: "";
+  background-color: #f2f3f4;
+  width: 8px;
+  height: 43px;
+  left: 0;
+  border-radius: 0 5px 6px 0;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.side-bar .paginas .pagina span,
+.opcoes .opcao span {
+  padding-left: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #f2f3f4;
+}
+
+.side-bar .paginas > hr {
+  color: #ced6d9;
+  width: 96px;
+  margin: 0 0 0 25px;
+}
