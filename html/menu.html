@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/menu.css" />
+    <title>Menu</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="side-bar">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo do Sistema" />
+        </div>
+        <div class="paginas">
+          <div class="pagina">
+            <a
+              class="sidebar_pages_links is_active"
+              id="link_1"
+              href="#"
+              onclick="sidebar_changes(event, 1)"
+            >
+              <object
+                class="icon"
+                data="/icons/home_active.svg"
+                type="image/svg+xml"
+              ></object>
+              <span>Início</span>
+            </a>
+          </div>
+          <hr />
+
+          <div class="pagina">
+            <a
+              class="sidebar_pages_links"
+              id="link_2"
+              href="#"
+              onclick="sidebar_changes(event, 2)"
+            >
+              <object
+                class="icon"
+                data="/icons/catalog_deactive.svg"
+                type="image/svg+xml"
+              ></object>
+              <span>Catálago</span>
+            </a>
+          </div>
+          <hr />
+
+          <div class="pagina">
+            <a
+              class="sidebar_pages_links"
+              href="#"
+              id="link_3"
+              onclick="sidebar_changes(event, 3)"
+            >
+              <object
+                class="icon"
+                data="/icons/custoumers_deactive.svg"
+                type="image/svg+xml"
+              ></object>
+              <span>Clientes</span>
+            </a>
+          </div>
+        </div>
+        <div class="opcoes">
+          <div class="opcao">
+            <a href="#">
+              <object
+                class="icon"
+                data="/icons/help-circle.svg"
+                type="image/svg+xml"
+              ></object>
+              <span>Suporte</span>
+            </a>
+          </div>
+          <div class="opcao">
+            <a href="">
+              <object
+                class="icon"
+                data="/icons/power.svg"
+                type="image/svg+xml"
+              ></object>
+              <span>Sair</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/menu.js"></script>
+  </body>
+</html>
