@@ -10,6 +10,7 @@
   height: 1052px;
   width: 234px;
   background-color: var(--primary-color);
+  border-radius: 0px 12px 12px 0px;
 }
 
 .side-bar .logo {
@@ -77,6 +78,11 @@
 a {
   text-decoration: none;
   color: #f2f3f4;
+}
+
+a > object {
+  height: 29px;
+  width: 29px;
 }
 
 .side-bar .paginas > hr {
