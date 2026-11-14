@@ -1,21 +1,48 @@
-const sidebar_pages_links = Array.from(
-  document.querySelectorAll(".sidebar_pages_links"),
-);
+const sidebarPagesLinks = document.querySelectorAll(".sidebar_pages_links");
+const pageContent = document.getElementById("page-content");
 
-function sidebar_changes(event, id) {
-  sidebar_pages_links.map((page_link) => {
-    page_link.classList.remove("is_active");
-    page_link.childNodes[1].data = page_link.childNodes[1].data.replace(
-      "_active",
-      "_deactive",
-    );
+async function loadPage(page, link) {
+  const response = await fetch(`${page}.html`);
+
+  if (!response.ok) {
+    pageContent.innerHTML = "Não foi possível carregar esta página.";
+    return;
+  }
+
+  pageContent.innerHTML = await response.text();
+
+  document.querySelector("#page-style")?.remove();
+
+  if (page === "catalogo") {
+    const stylesheet = document.createElement("link");
+    stylesheet.id = "page-style";
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "../css/catalogo.css";
+    document.head.appendChild(stylesheet);
+
+    const script = document.createElement("script");
+    script.src = "../js/catalogo.js";
+    pageContent.appendChild(script);
+  }
+
+  sidebarPagesLinks.forEach((pageLink) => {
+    pageLink.classList.remove("is_active");
+
+    const icon = pageLink.querySelector("object");
+    icon.data = icon.data.replace("_active.svg", "_deactive.svg");
   });
 
-  let pagina = document.getElementById(`link_${id}`);
-  pagina.classList.add("is_active");
-  pagina.childNodes[1].data = pagina.childNodes[1].data.replace(
-    "_deactive",
-    "_active",
-  );
-  console.log(pagina.childNodes[1].data);
+  link.classList.add("is_active");
+
+  const activeIcon = link.querySelector("object");
+  activeIcon.data = activeIcon.data.replace("_deactive.svg", "_active.svg");
 }
+
+sidebarPagesLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    loadPage(link.dataset.page, link);
+  });
+});
+
+loadPage("inicio", document.querySelector('[data-page="inicio"]'));
