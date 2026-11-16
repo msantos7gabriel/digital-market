@@ -6,13 +6,43 @@
       <span>Unidades: <strong id="total-unidades">0</strong></span>
     </div>
 
-    <button class="add-product" type="button">
+    <button class="add-product" id="open-modal" type="button">
       Adicionar Produto
     </button>
   </div>
 
-  <div id="catalog-container">
-
-    
-  </div>
+  <div id="catalog-container"></div>
 </section>
+
+<div class="modal" id="product-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Cadastrar Produto</h2>
+      <button type="button" id="close-modal">×</button>
+    </div>
+
+    <form id="product-form">
+      <div class="form-group">
+        <label for="product-name">Nome do produto</label>
+        <input type="text" id="product-name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="product-category">Categoria</label>
+        <input type="text" id="product-category" required />
+      </div>
+
+      <div class="form-group">
+        <label for="product-price">Preço</label>
+        <input type="number" id="product-price" min="0" step="0.01" required />
+      </div>
+
+      <div class="form-group">
+        <label for="product-quantity">Quantidade</label>
+        <input type="number" id="product-quantity" min="0" step="1" required />
+      </div>
+
+      <button type="submit">Cadastrar Produto</button>
+    </form>
+  </div>
+</div>
