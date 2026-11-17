@@ -1,11 +1,10 @@
-
 const openModal = document.getElementById("open-modal");
 const closeModal = document.getElementById("close-modal");
 const productModal = document.getElementById("product-modal");
 const productForm = document.getElementById("product-form");
 const catalogContainer = document.getElementById("catalog-container");
 
-let produtos = [];
+let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
 openModal.addEventListener("click", () => {
   productModal.classList.add("active");
@@ -26,6 +25,8 @@ productForm.addEventListener("submit", (event) => {
   };
 
   produtos.push(produto);
+
+  localStorage.setItem("produtos", JSON.stringify(produtos));
 
   renderizarProdutos();
 
@@ -94,3 +95,5 @@ function renderizarProdutos() {
   document.getElementById("total-unidades").textContent =
     produtos.reduce((total, produto) => total + produto.quantidade, 0);
 }
+
+renderizarProdutos();
