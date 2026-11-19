@@ -62,6 +62,16 @@ function renderizarProdutos() {
       const card = document.createElement("article");
       card.classList.add("product-card");
 
+      card.addEventListener("click", () => {
+      localStorage.setItem("produtoSelecionado", JSON.stringify(produto));
+
+      const catalogLink = document.querySelector(
+        '[data-page="catalogo"]'
+      );
+
+      loadPage("produtos", catalogLink);
+    });
+
       const imagem = document.createElement("div");
       imagem.classList.add("product-image");
 

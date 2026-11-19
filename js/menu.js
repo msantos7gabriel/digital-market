@@ -33,6 +33,18 @@ async function loadPage(page, link) {
       script.id = "page-script";
       script.src = "../js/catalogo.js";
       pageContent.appendChild(script);
+
+    } else if (page === "produtos") {
+      const stylesheet = document.createElement("link");
+      stylesheet.id = "page-style";
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = "../css/produtos.css";
+      document.head.appendChild(stylesheet);
+
+      const script = document.createElement("script");
+      script.id = "page-script";
+      script.src = "../js/produtos.js";
+      pageContent.appendChild(script);
     }
   } catch (error) {
     pageContent.innerHTML = "Não foi possível carregar esta página.";
