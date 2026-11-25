@@ -5,7 +5,7 @@
 Adicione seu nome na lista abaixo:
 
 - Nome: Geovane Neves
-- Nome:
+- Nome: Higor Castro
 - Nome:
 - Nome:
 

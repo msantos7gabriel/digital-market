@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Market - Clientes</title>
+  <link rel="stylesheet" href="">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f5f7;
+    }
+
+    /* ================= SIDEBAR ================= */
+    .sidebar {
+      width: 220px;
+      background-color: #3b5bdb;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px 20px;
+      flex-shrink: 0;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-circle {
+      width: 75px;
+      height: 75px;
+      background-color: #4c6ef5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .nav-item a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .nav-item.active a,
+    .nav-item a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* ================= CONTEÚDO PRINCIPAL ================= */
+    .main-wrapper {
+      flex: 1;
+      padding: 25px 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Barra Superior Azul */
+    .topbar {
+      background-color: #3b5bdb;
+      color: #ffffff;
+      padding: 14px 25px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 35px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .client-count {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .search-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 1 520px;
+    }
+
+    .search-box {
+      background-color: #ffffff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      flex: 1;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .search-box i {
+      color: #666;
+    }
+
+    .filter-btn {
+      background-color: #ffffff;
+      color: #3b5bdb;
+      border: none;
+      width: 38px;
+      height: 36px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-circle {
+      width: 36px;
+      height: 36px;
+      background-color: #ffffff;
+      color: #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    /* Área de Conteúdo Central */
+    .content-area {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .section-header h1 {
+      font-size: 22px;
+      color: #222;
+      font-weight: 600;
+    }
+
+    .btn-add {
+      background-color: #3b5bdb;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-add:hover {
+      background-color: #2f49b8;
+    }
+
+    /* Grid de Clientes (2 colunas) */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 35px;
+    }
+
+    .client-card {
+      background-color: #f8f9fa;
+      border: 1px solid #adb5bd;
+      border-radius: 6px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .client-card:hover {
+      background-color: #ffffff;
+      border-color: #3b5bdb;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .client-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .client-details h3 {
+      font-size: 14px;
+      color: #212529;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .client-details p {
+      font-size: 12px;
+      color: #6c757d;
+    }
+
+    .card-arrow {
+      color: #495057;
+      padding-left: 15px;
+      border-left: 1px solid #dee2e6;
+      font-size: 13px;
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 850px) {
+      .clients-grid {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu Lateral Esquerdo -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo-container">
+        <div class="logo-circle">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-house"></i> Início</a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-box"></i> Catálogo</a>
+        </li>
+        <li class="nav-item active">
+          <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="nav-item">
+        <a href="#"><i class="fa-regular fa-circle-question"></i> Suporte</a>
+      </div>
+      <div class="nav-item">
+        <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main class="main-wrapper">
+    <!-- Barra Superior -->
+    <header class="topbar">
+      <span class="client-count">Clientes: 30</span>
+
+      <div class="search-group">
+        <div class="search-box">
+          <input type="text" placeholder="Buscar Cliente">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button class="filter-btn" title="Filtrar">
+          <i class="fa-solid fa-filter"></i>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="icon-circle" title="Perfil">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="icon-circle" title="Notificações">
+          <i class="fa-regular fa-bell"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Lista de Clientes -->
+    <section class="content-area">
+      <div class="section-header">
+        <h1>Seus Clientes</h1>
+        <button class="btn-add">Adicionar Cliente</button>
+      </div>
+
+      <div class="clients-grid">
+        <!-- Card 1 -->
+        <div class="client-card">
+          <div class="client-info">
+            <div class="client-avatar"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="client-details">
+              <h3>Matheus Rocha</h3>
+              <p>(00) 91234-5678</p>
+            </div>
+          </div>
+          <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="client-card">
+          <div class="client-info">
+            <div class="client-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="client-details">
+              <h3>Claudinei Souza</h3>
+              <p>(00) 91234-5678</p>
+            </div>
+          </div>
+          <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="client-card">
+          <div class="client-info">
+            <div class="client-avatar"><i class="fa-solid fa-user-nurse"></i></div>
+            <div class="client-details">
+              <h3>Alice Fernandes</h3>
+              <p>(00) 91234-5678</p>
+            </div>
+          </div>
+          <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="client-card">
+          <div class="client-info">
+            <div class="client-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="client-details">
+              <h3>Camila Nogueira</h3>
+              <p>(00) 91234-5678</p>
+            </div>
+          </div>
+          <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="client-card">
+          <div class="client-info">
+            <div class="client-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="client-details">
+              <h3>Jorge da Silva</h3>
+              <p>(00) 91234-5678</p>
+            </div>
+          </div>
+          <div class="card-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="client-card">
+          <div class="client-info">
