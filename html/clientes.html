@@ -19,68 +19,6 @@
       background-color: #f4f5f7;
     }
 
-    /* ================= SIDEBAR ================= */
-    .sidebar {
-      width: 220px;
-      background-color: #3b5bdb;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 25px 20px;
-      flex-shrink: 0;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .logo-circle {
-      width: 75px;
-      height: 75px;
-      background-color: #4c6ef5;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .nav-item a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 12px 15px;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: 0.2s;
-    }
-
-    .nav-item.active a,
-    .nav-item a:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .sidebar-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
     /* ================= CONTEÚDO PRINCIPAL ================= */
     .main-wrapper {
       flex: 1;
@@ -281,38 +219,7 @@
 </head>
 <body>
 
-  <!-- Menu Lateral Esquerdo -->
-  <aside class="sidebar">
-    <div>
-      <div class="logo-container">
-        <div class="logo-circle">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-      </div>
-
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="#"><i class="fa-solid fa-house"></i> Início</a>
-        </li>
-        <li class="nav-item">
-          <a href="#"><i class="fa-solid fa-box"></i> Catálogo</a>
-        </li>
-        <li class="nav-item active">
-          <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="sidebar-footer">
-      <div class="nav-item">
-        <a href="#"><i class="fa-regular fa-circle-question"></i> Suporte</a>
-      </div>
-      <div class="nav-item">
-        <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
-      </div>
-    </div>
-  </aside>
-
+  
   <!-- Conteúdo Principal -->
   <main class="main-wrapper">
     <!-- Barra Superior -->
