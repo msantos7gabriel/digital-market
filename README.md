@@ -6,7 +6,7 @@ Adicione seu nome na lista abaixo:
 
 - Nome: Geovane Neves
 - Nome: Higor Castro
-- Nome:
+- Nome: Enzo Dias
 - Nome:
 
 ## Sobre o projeto
